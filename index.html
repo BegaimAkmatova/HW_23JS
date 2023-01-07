@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container2 {
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: bisque;
+            padding: 20px;
+
+        }
+        .container {
+            display: flex;
+        }
+        
+        .bema {
+            display: flex;
+            
+            
+        }
+        .wrapper{
+            width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .bema {
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 5px;
+            margin: 10px;
+            background-color: bisque;
+            width: 250px;
+            justify-content:space-between;
+            align-items: center;
+        }
+        .Beka {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+        }
+        #list {
+            padding: 0%;
+            text-align: center;
+            list-style: none;
+        }
+        #sum {
+            color: red;
+            font-size: 26px;
+            font-weight: 600;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container1">
+            <div class="wrapper" id="mainBlock"></div>
+        </div>
+        <div class="container2">
+            <h3 id="h3">You have 6 items in the basket</h3>
+            <span id="sum">sum</span>
+            <ul id="list"></ul>
+        </div>
+    </div>
+    <script>
+        const data = [{
+            itemName: 'Coffee',
+            price: 100,
+            logo:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHAlDlYx4ocZE5TcD0eASkuuUTyhb6jrfiA3aYTPv3sCIEU9WWMcv3ht4qSX8teK3B6Ds&usqp=CAU' 
+        },
+        { 
+            itemName: 'Burger',
+            price: 200,
+            logo:'https://static.vecteezy.com/system/resources/thumbnails/001/229/092/small/delicious-hot-burgers-with-lettering.jpg'
+        },
+        {
+            itemName: 'Tea',
+            price: 300,
+            logo:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyfRDvBJQydkcYL5LGEcfHFrQanERsJE3LLg&usqp=CAU'
+        },
+        { 
+            itemName: 'Coke',
+            price: 150,
+            logo:'https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/092010/coke-fishtail-logo.gif?itok=qmcMSXXv' 
+        },
+        {
+            itemName:'Cheeseburger',
+            price:120,
+            logo:'https://image.shutterstock.com/image-vector/cheese-burger-logo-icon-fast-260nw-1782039956.jpg'
+        },
+        {
+            itemName:'Fries',
+            price:40,
+            logo:'https://image.shutterstock.com/image-vector/fast-food-american-french-fries-260nw-1224539197.jpg'
+        }
+        ];
+
+        let mainBlock = document.getElementById('mainBlock')
+        let list = document.getElementById('list')
+        let sum = document.getElementById('sum')
+        let count = 0
+
+        let render = () => {
+            for(let i = 0; i < data.length; i++) {
+                console.log(data[i])
+
+                let userBlock = document.createElement('div')
+                userBlock.className = 'bema'
+
+                let itemName = document.createElement('h3')
+                itemName.innerHTML = data[i].itemName
+                
+                let price = document.createElement('span')
+                price.innerHTML = data[i].price
+
+                let logo = document.createElement('img')
+                logo.className = 'Beka'
+                logo.src = data[i].logo
+                
+                
+                const addTodo = () => {
+                let todoItem = document.createElement('li')
+                todoItem.innerHTML = `${data[i].itemName} ${data[i].price} сом`
+                list.append(todoItem)
+                sum.innerHTML = `${count += data[i].price}`
+            }
+                userBlock.addEventListener('click', addTodo)
+
+                mainBlock.append(userBlock)
+                userBlock.append(logo)
+                userBlock.append(itemName)
+                userBlock.append(price)
+            }
+        }
+        render()
+    </script>
+</body>
+</html>
